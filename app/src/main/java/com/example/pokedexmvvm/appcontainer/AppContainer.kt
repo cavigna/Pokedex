@@ -1,6 +1,6 @@
 package com.example.pokedexmvvm.appcontainer
 
-import com.example.pokedexmvvm.MainViewModelFactory
+import com.example.pokedexmvvm.ui.main.MainViewModelFactory
 import com.example.pokedexmvvm.repository.PokeApiRepository
 import com.example.pokedexmvvm.service.RetroService
 import retrofit2.Retrofit

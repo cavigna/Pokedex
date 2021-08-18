@@ -1,16 +1,17 @@
-package com.example.pokedexmvvm
+package com.example.pokedexmvvm.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.example.pokedexmvvm.appcontainer.PokeApplication
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.pokedexmvvm.databinding.ActivityMainBinding
 import com.example.pokedexmvvm.repository.PokeApiRepository
 import com.example.pokedexmvvm.service.RetroInstance
+import com.example.pokedexmvvm.ui.main.MainAdapter
+import com.example.pokedexmvvm.ui.main.MainViewModel
+import com.example.pokedexmvvm.ui.main.MainViewModelFactory
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {

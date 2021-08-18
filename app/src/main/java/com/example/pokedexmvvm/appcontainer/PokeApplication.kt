@@ -1,8 +1,7 @@
 package com.example.pokedexmvvm.appcontainer
 
 import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
-class PokeApplication: Application() {
-
-    val appContainer = AppContainer()
-}
+@HiltAndroidApp
+class PokeApplication: Application()

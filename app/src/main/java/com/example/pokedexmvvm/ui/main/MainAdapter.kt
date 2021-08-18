@@ -1,20 +1,17 @@
-package com.example.pokedexmvvm
+package com.example.pokedexmvvm.ui.main
 
-import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.pokedexmvvm.databinding.CardPokemonBinding
 import com.example.pokedexmvvm.model.api.pokelist.PokeList
-import androidx.palette.graphics.Palette
-import coil.ImageLoader
-import coil.request.ImageRequest
-import kotlinx.coroutines.coroutineScope
-import kotlin.coroutines.coroutineContext
+import com.example.pokedexmvvm.ui.details.DetailsActivity
 
 class MainAdapter(val pokeList: PokeList): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
     private val currentPokemon = pokeList.pokeResult
@@ -36,27 +33,21 @@ class MainAdapter(val pokeList: PokeList): RecyclerView.Adapter<MainAdapter.Main
                 "PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${position + 1}.png"
 
 
-        val contexto = holder.itemView.context
-        //var request = ImageRequest.Builder().data
-        //colorTarjeta(holder.binding.imageViewPoke.load(urlImage))
-
-//        val palette = Palette.Builder().generate { palette: Palette? ->
-//
-//        }
+        //val contexto = holder.itemView.context
+        val nombre = pokeList.pokeResult[position].name
 
         holder.binding.apply{
-            textViewNombre.text = pokeList.pokeResult[position].name
+            textViewNombre.text = nombre
             imageViewPoke.load(urlImage)
+        }
+        holder.binding.tarjeta.setOnClickListener {
+            val contexto = holder.binding.tarjeta.context
 
-//            val loader = ImageLoader(contexto)
-//            val request = ImageRequest.Builder(contexto)
-//                .data(urlImage).target { resultado->
-//                    val dibujo =(resultado as BitmapDrawable).bitmap
-//                }
-//                .build()
-//
-//            val result = (loader.execute(request) as SuccessResult).drawable
-//            val bitmap = (result as BitmapDrawable).bitmap
+            val intento = Intent(contexto, DetailsActivity::class.java)
+
+            intento.putExtra("nombre", nombre)
+            contexto.startActivity(intento)
+
         }
     }
 
@@ -85,3 +76,14 @@ class MainAdapter(val pokeList: PokeList): RecyclerView.Adapter<MainAdapter.Main
                 onFinish(Color(colorValue))
             }
  */
+
+
+//            val loader = ImageLoader(contexto)
+//            val request = ImageRequest.Builder(contexto)
+//                .data(urlImage).target { resultado->
+//                    val dibujo =(resultado as BitmapDrawable).bitmap
+//                }
+//                .build()
+//
+//            val result = (loader.execute(request) as SuccessResult).drawable
+//            val bitmap = (result as BitmapDrawable).bitmap
